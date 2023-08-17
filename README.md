@@ -16,8 +16,27 @@ An SSI System usually comprises three entities in the process:
 
 Our PoC tries to imitate the flow of the SSI system. It provides a platform for simulating the complete flow of how the credential flow might work in a real-world use case. <br>
 
-### Technology used
 
+### Architecture
+
+The project can be divided as further: <br>
+1. Application logic: This contains the complete backend and frontend required for an application. The components include as follows <br>
+    i. Front-end: A react front end including registration, login, routing to  role based individual pages. The pages including a holder, an issuer and a verifier page
+    ii. Backend: A Expressjs backend for routing of requests and to call wrapper, allpication layer services. (They further make calls to the wrapper-APIs).
+    iii. Database: A SQL database with columns as:
+        1. id (int): unique incremental id starting from 0, to uiquely identify each user.
+        2. username (varchar): A unique credential used for verification purposes.
+        3. password (varchar): hashed and salted password stored in db for verification.
+        4. usertype (varchar): Type of user based on role, viz. Issuer, Holder, Verifier.
+        5. displayname (varchar): Name to be displayed once logged in. Also used to dermine the sender of credentials and presentations.
+        6. schema_id (varchar): Only for issuers. To store on-chain schema_id of the credentials to be issued.
+        7. cred_def_id (varchar): Only for issuers. To store a unique identifier for issuer ready to issue credentials.
+        8. credntials (varchar): Only for Holders. A list of credentials received in wallet, stored for convinience.
+
+2. Wrapper APIs : This contains the Nestjs backend with Individual APIs for agents, connection, credential-definition, holder, issuance, present-proof, schema. All the APIs are custom made and auto flags are enabled for majority of endpoints, with use of only mandatory variables used keeping the flow easy to understand.
+
+<img src="./assets/System Architecture.jpeg" alt = "System Architecture.jpeg">
+Pictorially the architecture can be represented as above.
 
 
 ## How to
@@ -27,7 +46,4 @@ Our PoC tries to imitate the flow of the SSI system. It provides a platform for 
 ### How to issue-hold-present credentials
 
 ### How is the application structured
-
-
-## In-depth structure of the application
 
