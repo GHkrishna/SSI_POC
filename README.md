@@ -21,9 +21,9 @@ Our PoC tries to imitate the flow of the SSI system. It provides a platform for 
 
 The project can be divided as further: <br>
 1. Application logic: This contains the complete backend and frontend required for an application. The components include as follows <br>
-    i. Front-end: A react front end including registration, login, routing to  role based individual pages. The pages including a holder, an issuer and a verifier page
-    ii. Backend: A Expressjs backend for routing of requests and to call wrapper, allpication layer services. (They further make calls to the wrapper-APIs).
-    iii. Database: A SQL database with columns as:
+    1. Front-end: A react front end including registration, login, routing to  role based individual pages. The pages including a holder, an issuer and a verifier page
+    2. Backend: A Expressjs backend for routing of requests and to call wrapper, allpication layer services. (They further make calls to the wrapper-APIs).
+    3. Database: A SQL database with columns as:
         1. id (int): unique incremental id starting from 0, to uiquely identify each user.
         2. username (varchar): A unique credential used for verification purposes.
         3. password (varchar): hashed and salted password stored in db for verification.
@@ -35,7 +35,7 @@ The project can be divided as further: <br>
 
 2. Wrapper APIs : This contains the Nestjs backend with Individual APIs for agents, connection, credential-definition, holder, issuance, present-proof, schema. All the APIs are custom made and auto flags are enabled for majority of endpoints, with use of only mandatory variables used keeping the flow easy to understand.
 
-<img src="./assets/System Architecture.jpeg" alt = "System Architecture.jpeg">
+<img src="./assets/System Architecture.jpeg" alt = "System Architecture.jpeg" align = "middle">
 Pictorially the architecture can be represented as above.
 
 
