@@ -14,7 +14,7 @@ async function bootstrap() {
     .setDescription(`BE Project API's `)
     .setVersion('1.0')
     //.addBearerAuth()
-    .addServer(`http://localhost:3003`)
+    .addServer(`http://localhost:${process.env.PORT}`)
     .build();
 
   const document = SwaggerModule.createDocument(app,options)
